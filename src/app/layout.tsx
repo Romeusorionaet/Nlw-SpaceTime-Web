@@ -7,6 +7,7 @@ import { Copyright } from '../components/Copyright'
 import { Hero } from '../components/Hero'
 import { SignIn } from '../components/SignIn'
 import { Profile } from '../components/Profile'
+import '../styles/scrollbar.css'
 
 import {
   Roboto_Flex as Roboto,
@@ -47,7 +48,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Copyright />
           </div>
           {/* right */}
-          <div className="flex max-h-screen flex-col overflow-y-scroll bg-[url(../assets/bg-stars.svg)] bg-cover">
+          <div className="scrollbar flex max-h-screen flex-col overflow-y-auto bg-[url(../assets/bg-stars.svg)] bg-cover">
             {children}
           </div>
         </main>
