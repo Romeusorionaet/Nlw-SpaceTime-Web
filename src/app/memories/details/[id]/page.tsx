@@ -2,7 +2,6 @@ import { api } from '@/lib/api'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ButtonEditAndSave } from './components/ButtonEditAndSave'
 
 export interface MemoryProps {
   id: string
@@ -15,7 +14,6 @@ export default async function Details({ params }: { params: { id: string } }) {
   const id = params.id
 
   const token = cookies().get('token')?.value
-  console.log(token)
   const response = await api.get(`/memories/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -33,16 +31,7 @@ export default async function Details({ params }: { params: { id: string } }) {
       </Link>
 
       <div className="mt-20 space-y-8">
-        <ButtonEditAndSave
-          id={memory.id}
-          coverUrl={memory.coverUrl}
-          content={memory.content}
-          isPublic={memory.isPublic}
-        />
-        {/* <div>
-          <button onClick={() => handleEditMemory}>Alterar memoria</button>
-          <button>Salvar memoria alterada</button>
-        </div> */}
+        <Link href={`./memories/update/${id}`}>Alterar memoria</Link>
 
         <Image
           className="aspect-video w-full rounded-lg object-cover"

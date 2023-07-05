@@ -1,4 +1,4 @@
-import './globals.css'
+import '../styles/globals.css'
 import { ReactNode } from 'react'
 
 import { cookies } from 'next/headers'

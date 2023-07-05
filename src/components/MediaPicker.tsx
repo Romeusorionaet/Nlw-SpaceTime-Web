@@ -1,7 +1,12 @@
 'use client'
-import { useState, ChangeEvent } from 'react'
 
-export function MediaPicker() {
+import { useState, ChangeEvent } from 'react'
+import Image from 'next/image'
+interface MediaPickerProp {
+  srcFile?: string | null
+}
+
+export function MediaPicker({ srcFile }: MediaPickerProp) {
   const [preview, setPreview] = useState<string | null>(null)
 
   function onFileSelected(event: ChangeEvent<HTMLInputElement>) {
@@ -18,20 +23,32 @@ export function MediaPicker() {
   return (
     <>
       <input
-        onChange={onFileSelected}
-        name="coverUrl"
         type="file"
+        onChange={onFileSelected}
         id="media"
+        name="coverUrl"
+        accept="image/*"
         className="invisible h-0 w-0"
       />
 
-      {preview && (
-        // eslint-disable-next-line
-        <img
+      {preview ? (
+        <Image
           src={preview}
+          width={550}
+          height={200}
           alt=""
-          className="roudend-lg aspect-video w-full object-cover"
+          className="aspect-video w-full rounded-lg object-cover"
         />
+      ) : (
+        srcFile && (
+          <Image
+            src={srcFile}
+            width={550}
+            height={200}
+            alt=""
+            className="aspect-video w-full rounded-lg object-cover"
+          />
+        )
       )}
     </>
   )
