@@ -8,6 +8,7 @@ export interface MemoryProps {
   coverUrl: string
   content: string
   isPublic: boolean
+  userId: string
 }
 
 export default async function Details({ params }: { params: { id: string } }) {
@@ -31,8 +32,6 @@ export default async function Details({ params }: { params: { id: string } }) {
       </Link>
 
       <div className="mt-20 space-y-8">
-        <Link href={`./memories/update/${id}`}>Alterar memoria</Link>
-
         <Image
           className="aspect-video w-full rounded-lg object-cover"
           width={550}

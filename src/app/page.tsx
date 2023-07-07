@@ -11,8 +11,10 @@ dayjs.locale(ptBR)
 
 interface Memory {
   id: string
+  userId: string
   coverUrl: string
   excerpt: string
+  isPublic: boolean
   createdAt: string
 }
 
@@ -31,7 +33,8 @@ export default async function Home() {
     },
   })
 
-  const memories: Memory[] = response.data
+  const memories: Memory[] = response.data.memories
+  const userIdOn: string = response.data.userIdOn
 
   if (memories.length === 0) {
     return <EmptyMemories />
@@ -40,12 +43,22 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-10 p-8">
       {memories.map((memory) => {
-        // console.log(memory.createdAt)
         return (
           <div key={memory.id} className="space-y-4">
-            <time className="-ml-8 flex items-center gap-2 text-sm text-gray-100 before:h-px before:w-5 before:bg-gray-50">
-              {dayjs(memory.createdAt).format('D[ de ]MMMM[, ]YYYY')}
-            </time>
+            <div className="flex justify-between">
+              <time className="-ml-8 flex items-center gap-2 text-sm text-gray-100 before:h-px before:w-5 before:bg-gray-50">
+                {dayjs(memory.createdAt).format('D[ de ]MMMM[, ]YYYY')}
+              </time>
+
+              {userIdOn === memory.userId ? (
+                <Link href={`./memories/update/${memory.id}`}>
+                  Alterar memoria
+                </Link>
+              ) : (
+                <></>
+              )}
+            </div>
+
             <Image
               src={memory.coverUrl}
               alt=""
@@ -56,13 +69,18 @@ export default async function Home() {
             <p className="text-lg leading-relaxed text-gray-100">
               {memory.excerpt}
             </p>
-            <Link
-              href={`/memories/details/${memory.id}`}
-              className="flex items-center gap-2 text-sm text-gray-200 hover:text-gray-100"
-            >
-              Ler mais
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+
+            <div className="flex justify-between">
+              <Link
+                href={`/memories/details/${memory.id}`}
+                className="flex items-center gap-2 text-sm text-gray-200 hover:text-gray-100"
+              >
+                Ler mais
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+
+              {memory.isPublic === true ? <></> : <span>Privado</span>}
+            </div>
           </div>
         )
       })}

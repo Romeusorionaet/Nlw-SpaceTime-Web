@@ -17,8 +17,25 @@ export function AlterMemory({ memory }: MemoryProp) {
   const [isPublic, setIsPublic] = useState(memory.isPublic)
 
   const router = useRouter()
+  const token = Cookie.get('token')
 
-  async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
+  async function handleDeleteMemory() {
+    try {
+      await api.delete(`/memories/${memory.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (error) {
+      console.log(error)
+      return alert('Problema ao apagar a memória!')
+    }
+
+    router.refresh()
+    router.push('/')
+  }
+
+  async function handleAlterMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     const formData = new FormData(event.currentTarget)
@@ -38,8 +55,6 @@ export function AlterMemory({ memory }: MemoryProp) {
         return alert('Imagem não cadastrada!')
       }
     }
-
-    const token = Cookie.get('token')
 
     try {
       await api.put(
@@ -65,7 +80,7 @@ export function AlterMemory({ memory }: MemoryProp) {
   }
 
   return (
-    <form onSubmit={handleCreateMemory}>
+    <form onSubmit={handleAlterMemory}>
       {memory && (
         <div className="mt-20 space-y-8">
           <div className="flex items-center gap-4">
@@ -105,7 +120,12 @@ export function AlterMemory({ memory }: MemoryProp) {
         </div>
       )}
 
-      <button type="submit">Atualizar</button>
+      <div className="flex justify-between">
+        <button type="submit">Atualizar</button>
+        <button type="button" onClick={handleDeleteMemory}>
+          Apagar memória
+        </button>
+      </div>
     </form>
   )
 }

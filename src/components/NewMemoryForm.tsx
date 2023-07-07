@@ -28,6 +28,10 @@ export function NewMemoryForm() {
       coverUrl = uploadResponse.data.fileUrl
     }
 
+    if (formData.get('content') === '') {
+      return alert('A sua memória precisa de uma história.')
+    }
+
     await api.post(
       '/memories',
       {
