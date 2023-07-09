@@ -20,6 +20,11 @@ export function AlterMemory({ memory }: MemoryProp) {
   const token = Cookie.get('token')
 
   async function handleDeleteMemory() {
+    const handleRequest = confirm('Tem certeza que deseja apagar esta memória?')
+    if (handleRequest === false) {
+      return
+    }
+
     try {
       await api.delete(`/memories/${memory.id}`, {
         headers: {
@@ -37,15 +42,15 @@ export function AlterMemory({ memory }: MemoryProp) {
 
   async function handleAlterMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-
     const formData = new FormData(event.currentTarget)
     const fileToUpload: any = formData.get('coverUrl')
 
     let coverUrl = ''
 
+    const uploadFormData = new FormData()
+    uploadFormData.append('cover', fileToUpload)
+
     if (fileToUpload!.name !== '') {
-      const uploadFormData = new FormData()
-      uploadFormData.append('cover', fileToUpload)
       try {
         const uploadResponse = await api.post('upload', uploadFormData)
 
@@ -121,8 +126,17 @@ export function AlterMemory({ memory }: MemoryProp) {
       )}
 
       <div className="flex justify-between">
-        <button type="submit">Atualizar</button>
-        <button type="button" onClick={handleDeleteMemory}>
+        <button
+          type="submit"
+          className="inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
+        >
+          Atualizar
+        </button>
+        <button
+          type="button"
+          onClick={handleDeleteMemory}
+          className="inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
+        >
           Apagar memória
         </button>
       </div>

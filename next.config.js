@@ -5,6 +5,7 @@ const nextConfig = {
     domains: [
       'avatars.githubusercontent.com',
       '192.168.18.41',
+      'localhost',
       'nlw-spacetime-3nhe.onrender.com',
     ],
   },

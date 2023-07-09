@@ -59,13 +59,15 @@ export default async function Home() {
               )}
             </div>
 
-            <Image
-              src={memory.coverUrl}
-              alt=""
-              width={592}
-              height={280}
-              className="aspect-video w-full rounded-lg object-cover"
-            />
+            <div className="max-w-[50rem]">
+              <Image
+                src={memory.coverUrl}
+                alt=""
+                width={592}
+                height={280}
+                className="aspect-video w-full rounded-lg object-cover"
+              />
+            </div>
             <p className="text-lg leading-relaxed text-gray-100">
               {memory.excerpt}
             </p>

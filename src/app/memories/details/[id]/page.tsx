@@ -1,4 +1,5 @@
 import { api } from '@/lib/api'
+import { ChevronLeft } from 'lucide-react'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -26,14 +27,15 @@ export default async function Details({ params }: { params: { id: string } }) {
     <div className="px-4 pt-10">
       <Link
         href={`/`}
-        className="fixed top-0 flex h-10 w-40 items-center justify-center gap-2 rounded-lg bg-gray-900 text-sm text-gray-200 hover:text-gray-100"
+        className="fixed top-16 flex h-10 w-40 items-center justify-center gap-2 rounded-lg bg-gray-900 text-sm text-gray-200 hover:text-gray-100"
       >
+        <ChevronLeft className="h-4 w-4" />
         Ver outras memorias
       </Link>
 
       <div className="mt-20 space-y-8">
         <Image
-          className="aspect-video w-full rounded-lg object-cover"
+          className="aspect-video w-full rounded-lg object-contain"
           width={550}
           height={200}
           src={memory.coverUrl}
