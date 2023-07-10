@@ -51,7 +51,7 @@ export default async function Home() {
               </time>
 
               {userIdOn === memory.userId ? (
-                <Link href={`./memories/update/${memory.id}`}>
+                <Link href={`/memories/update/${memory.id}`}>
                   Alterar memoria
                 </Link>
               ) : (
