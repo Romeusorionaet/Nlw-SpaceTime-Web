@@ -39,7 +39,7 @@ export async function getServerSideProps({
   }
 }
 
-export default async function Details({ memory }: { memory: MemoryProps }) {
+export default function Details({ memory }: { memory: MemoryProps }) {
   return (
     <div className="px-4 pt-10 ">
       <Link
