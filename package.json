@@ -1,5 +1,6 @@
 {
-  "name": "web",
+  "name": "web-spacetime",
+  "author": "Romeu soares",
   "version": "0.1.0",
   "private": true,
   "scripts": {

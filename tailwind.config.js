@@ -67,6 +67,11 @@ module.exports = {
       blur: {
         full: '194px',
       },
+
+      screens: {
+        Mobile: '800px',
+        MiniMobile: '365px',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],

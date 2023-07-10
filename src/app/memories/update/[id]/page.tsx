@@ -17,10 +17,10 @@ export default async function Update({ params }: { params: { id: string } }) {
   const memory: MemoryProps = response.data
 
   return (
-    <div className="px-4 pt-10">
+    <div className="px-4 py-10">
       <Link
         href={`/`}
-        className="fixed top-16 flex h-10 w-40 items-center justify-center gap-2 rounded-lg bg-gray-900 text-sm text-gray-200 hover:text-gray-100"
+        className="flex h-10 w-40 items-center justify-center gap-2 rounded-lg bg-gray-900 text-sm text-gray-200 hover:text-gray-100 max-Mobile:right-4 max-Mobile:top-[22rem]"
       >
         <ChevronLeft className="h-4 w-4" />
         Ver outras memorias
