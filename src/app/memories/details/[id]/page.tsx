@@ -17,7 +17,11 @@ export interface MemoryProps {
   createdAt: string
 }
 
-export default async function Details({ params }: { params: { id: string } }) {
+export async function getServerSideProps({
+  params,
+}: {
+  params: { id: string }
+}) {
   const id = params.id
 
   const token = cookies().get('token')?.value
@@ -28,6 +32,14 @@ export default async function Details({ params }: { params: { id: string } }) {
   })
   const memory: MemoryProps = response.data
 
+  return {
+    props: {
+      memory,
+    },
+  }
+}
+
+export default async function Details({ memory }: { memory: MemoryProps }) {
   return (
     <div className="px-4 pt-10 ">
       <Link
