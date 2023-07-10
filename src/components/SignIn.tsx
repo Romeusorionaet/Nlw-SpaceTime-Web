@@ -5,6 +5,7 @@ export function SignIn() {
     <a
       href={`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`}
       className="flex items-center gap-3 text-left transition-colors hover:text-gray-50"
+      rel="noreferrer"
     >
       <p className="maax-w-[148px] loading-snug text-sm">
         <span className="underline">Criar sua conta</span>
