@@ -13,14 +13,7 @@ export async function GET(request: NextRequest) {
 
   const { token } = registerResponse.data
 
-  const redirectURL =
-    redirectTo ??
-    new URL(
-      '/',
-      process.env.NEXT_PUBLIC_NEXTAUTH_URL
-        ? process.env.NEXT_PUBLIC_NEXTAUTH_URL
-        : request.url,
-    )
+  const redirectURL = redirectTo ?? new URL('/', request.url)
 
   const cookieExpiresInSeconds = 60 * 60 * 24 * 30
 
