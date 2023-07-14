@@ -11,6 +11,7 @@ dayjs.locale(ptBR)
 
 interface Memory {
   id: string
+  author: string
   userId: string
   coverUrl: string
   excerpt: string
@@ -57,7 +58,7 @@ export default async function Home() {
               )}
             </div>
 
-            <div className="max-w-[50rem]">
+            <div className="max-w-[50rem] text-center">
               <Image
                 src={memory.coverUrl}
                 alt=""
@@ -65,6 +66,9 @@ export default async function Home() {
                 height={280}
                 className="aspect-video w-full rounded-lg object-cover"
               />
+              <span className="mt-4">
+                by <strong className="text-green-200">{memory.author}</strong>
+              </span>
             </div>
             <p className="text-lg leading-relaxed text-gray-100">
               {memory.excerpt}
