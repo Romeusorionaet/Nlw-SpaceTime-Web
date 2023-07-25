@@ -13,7 +13,7 @@ interface MemoryProp {
 }
 
 export function AlterMemory({ memory }: MemoryProp) {
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState(memory.content)
   const [isPublic, setIsPublic] = useState(memory.isPublic)
 
   const router = useRouter()
@@ -59,6 +59,10 @@ export function AlterMemory({ memory }: MemoryProp) {
         console.log(error)
         return alert('Imagem não cadastrada!')
       }
+    }
+
+    if (!content) {
+      return alert('A sua memória precisa de uma descrição')
     }
 
     try {
