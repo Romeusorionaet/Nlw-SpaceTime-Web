@@ -10,6 +10,8 @@
 
 <p>📃 Seja bem-vindo ao Space Time - O lugar perfeito para eternizar suas lembranças! Compartilhe momentos inesquecíveis através de uma única imagem e uma emocionante descrição que encapsule toda a magia da sua memória. Aqui, cada lembrança ganha vida e se torna uma história cativante. Junte-se a nós e descubra como é fácil e encantador guardar seus momentos mais preciosos em um único espaço!</p
 
+<p>Esta aplicação foi criado no evento da empresa em tecnologia <strong>Rocketseat</strong> e aprimorado por minha pessoa.</p>
+
 <br>
 
 <div align='center'>
