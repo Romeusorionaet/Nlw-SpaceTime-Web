@@ -3,6 +3,7 @@
 import { useHandleScroll } from '@/hooks/useHandleScroll'
 import nlwLogo from '../assets/nlw-spacetime-logo.svg'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function Hero() {
   const isFixed = useHandleScroll()
@@ -25,14 +26,14 @@ export function Hero() {
         </p>
       </div>
 
-      <a
+      <Link
         href="/memories/new"
-        className={`inline-block rounded-full bg-green-500 px-5 py-3 text-center font-alt text-sm uppercase leading-none text-black hover:bg-green-600 ${
-          isFixed ? 'fixed left-4 right-0 top-0 max-w-[14rem]' : ''
+        className={`inline-block rounded-full bg-green-500 px-5 py-3 text-center font-alt text-sm uppercase leading-none text-black duration-500 hover:bg-green-600 ${
+          isFixed ? 'fixed left-4 right-0 top-0 max-w-[14rem]' : 'relative'
         }`}
       >
-        CADASTRAR LEMBRANÇA
-      </a>
+        cadastrar lembrança
+      </Link>
     </div>
   )
 }
