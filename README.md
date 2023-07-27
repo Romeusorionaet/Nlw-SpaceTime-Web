@@ -96,7 +96,7 @@ Desfrute da integração com a API de autenticação do GitHub e crie experiênc
 
 <h2> Backend </h2>
 
->Esta aplicação esta utilizando a api https://github.com/Romeusorionaet/Api-Nlw-SpaceTime entre no repositório e siga os passos para a configuração
+>Esta aplicação está utilizando a api https://github.com/Romeusorionaet/Api-Nlw-SpaceTime entre no repositório e siga os passos para a configuração
 
 <br />
 
