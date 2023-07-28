@@ -6,7 +6,7 @@ import { FormEvent, useState } from 'react'
 import { MediaPicker } from '@/components/MediaPicker'
 import { api } from '@/lib/api'
 import { useRouter } from 'next/navigation'
-import { MemoryProps } from '../../Details/[id]/page'
+import { MemoryProps } from '../../details/[id]/page'
 
 interface MemoryProp {
   memory: MemoryProps

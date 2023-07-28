@@ -1,9 +1,9 @@
 import { cookies } from 'next/headers'
 import { api } from '@/lib/api'
-import { MemoryProps } from '../../Details/[id]/page'
 import { AlterMemory } from '../components/AlterMemory'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
+import { MemoryProps } from '../../details/[id]/page'
 
 export default async function Update({ params }: { params: { id: string } }) {
   const id = params.id
