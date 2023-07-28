@@ -52,7 +52,7 @@ export default async function Home() {
               </time>
 
               {userIdOn === memory.userId ? (
-                <a href={`/memories/update/${memory.id}`}>Alterar memoria</a>
+                <a href={`/Memories/Update/${memory.id}`}>Alterar memoria</a>
               ) : (
                 <></>
               )}
@@ -76,7 +76,7 @@ export default async function Home() {
 
             <div className="flex justify-between">
               <Link
-                href={`/memories/details/${memory.id}`}
+                href={`/Memories/Details/${memory.id}`}
                 className="flex items-center gap-2 text-sm text-gray-200 hover:text-gray-100"
               >
                 Ler mais

@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers'
 import { api } from '@/lib/api'
-import { MemoryProps } from '../../details/[id]/page'
+import { MemoryProps } from '../../Details/[id]/page'
 import { AlterMemory } from '../components/AlterMemory'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'

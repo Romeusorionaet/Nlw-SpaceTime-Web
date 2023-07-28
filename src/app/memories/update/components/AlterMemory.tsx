@@ -3,10 +3,10 @@
 import { Camera } from 'lucide-react'
 import Cookie from 'js-cookie'
 import { FormEvent, useState } from 'react'
-import { MemoryProps } from '../../details/[id]/page'
 import { MediaPicker } from '@/components/MediaPicker'
 import { api } from '@/lib/api'
 import { useRouter } from 'next/navigation'
+import { MemoryProps } from '../../Details/[id]/page'
 
 interface MemoryProp {
   memory: MemoryProps
