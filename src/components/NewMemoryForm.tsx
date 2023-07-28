@@ -2,16 +2,20 @@
 
 import { Camera } from 'lucide-react'
 import { MediaPicker } from './MediaPicker'
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 import { api } from '@/lib/api'
 import Cookie from 'js-cookie'
 import { useRouter } from 'next/navigation'
 
 export function NewMemoryForm() {
+  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
+    useState(false)
+
   const router = useRouter()
 
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    setIsCreatingCheckoutSession(true)
 
     const formData = new FormData(event.currentTarget)
 
@@ -86,10 +90,11 @@ export function NewMemoryForm() {
       />
 
       <button
+        disabled={isCreatingCheckoutSession}
         type="submit"
         className="inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
       >
-        Salvar
+        {isCreatingCheckoutSession ? 'Salvando...' : 'Salvar'}
       </button>
     </form>
   )
