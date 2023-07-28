@@ -94,30 +94,3 @@ export default async function Home() {
     </div>
   )
 }
-
-export async function getStaticProps() {
-  const isAuthenticated = cookies().has('token')
-
-  if (!isAuthenticated) {
-    return { props: {} }
-  }
-
-  const token = cookies().get('token')?.value
-
-  const response = await api.get('/memories', {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-
-  const memories: Memory[] = response.data.memories
-  const userIdOn: string = response.data.userIdOn
-
-  return {
-    props: {
-      memories,
-      userIdOn,
-    },
-    revalidate: 60 * 5,
-  }
-}
