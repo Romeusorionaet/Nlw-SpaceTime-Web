@@ -52,7 +52,9 @@ export default async function Home() {
               </time>
 
               {userIdOn === memory.userId ? (
-                <a href={`/memories/update/${memory.id}`}>Alterar memoria</a>
+                <Link href={`/memories/update/${memory.id}`} prefetch={false}>
+                  Alterar memoria
+                </Link>
               ) : (
                 <></>
               )}
@@ -78,6 +80,7 @@ export default async function Home() {
               <Link
                 href={`/memories/details/${memory.id}`}
                 className="flex items-center gap-2 text-sm text-gray-200 hover:text-gray-100"
+                prefetch={false}
               >
                 Ler mais
                 <ArrowRight className="h-4 w-4" />
