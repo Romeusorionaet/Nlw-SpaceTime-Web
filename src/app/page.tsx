@@ -9,7 +9,7 @@ import { ArrowRight } from 'lucide-react'
 
 dayjs.locale(ptBR)
 
-interface MemoryProps {
+interface Memory {
   id: string
   author: string
   userId: string
@@ -19,28 +19,23 @@ interface MemoryProps {
   createdAt: string
 }
 
-interface HomeProps {
-  memories: MemoryProps[]
-  userIdOn: string
-}
-
-export default function Home({ memories, userIdOn }: HomeProps) {
+export default async function Home() {
   const isAuthenticated = cookies().has('token')
 
   if (!isAuthenticated) {
     return <EmptyMemories />
   }
 
-  // const token = cookies().get('token')?.value
+  const token = cookies().get('token')?.value
 
-  // const response = await api.get('/memories', {
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //   },
-  // })
+  const response = await api.get('/memories', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
 
-  // const memories: Memory[] = response.data.memories
-  // const userIdOn: string = response.data.userIdOn
+  const memories: Memory[] = response.data.memories
+  const userIdOn: string = response.data.userIdOn
 
   if (memories.length === 0) {
     return <EmptyMemories />
@@ -115,7 +110,7 @@ export async function getStaticProps() {
     },
   })
 
-  const memories: MemoryProps[] = response.data.memories
+  const memories: Memory[] = response.data.memories
   const userIdOn: string = response.data.userIdOn
 
   return {
