@@ -48,7 +48,7 @@ export function AlterMemory({ memory }: MemoryProp) {
     let coverUrl = ''
 
     const uploadFormData = new FormData()
-    uploadFormData.append('cover', fileToUpload)
+    uploadFormData.append('file', fileToUpload)
 
     if (fileToUpload!.name !== '') {
       try {
@@ -57,7 +57,9 @@ export function AlterMemory({ memory }: MemoryProp) {
         coverUrl = uploadResponse.data.fileUrl
       } catch (error) {
         console.log(error)
-        return alert('Imagem não cadastrada!')
+        return alert(
+          'Imagem não cadastrada! OBS: Apenas imagens com ".jpeg, png, jpg',
+        )
       }
     }
 
