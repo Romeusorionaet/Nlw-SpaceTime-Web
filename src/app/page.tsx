@@ -9,7 +9,7 @@ import { ArrowRight } from 'lucide-react'
 
 dayjs.locale(ptBR)
 
-interface Memory {
+interface MemoryProps {
   id: string
   author: string
   userId: string
@@ -19,23 +19,28 @@ interface Memory {
   createdAt: string
 }
 
-export default async function Home() {
+interface HomeProps {
+  memories: MemoryProps[]
+  userIdOn: string
+}
+
+export default function Home({ memories, userIdOn }: HomeProps) {
   const isAuthenticated = cookies().has('token')
 
   if (!isAuthenticated) {
     return <EmptyMemories />
   }
 
-  const token = cookies().get('token')?.value
+  // const token = cookies().get('token')?.value
 
-  const response = await api.get('/memories', {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
+  // const response = await api.get('/memories', {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // })
 
-  const memories: Memory[] = response.data.memories
-  const userIdOn: string = response.data.userIdOn
+  // const memories: Memory[] = response.data.memories
+  // const userIdOn: string = response.data.userIdOn
 
   if (memories.length === 0) {
     return <EmptyMemories />
@@ -93,4 +98,31 @@ export default async function Home() {
       })}
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const isAuthenticated = cookies().has('token')
+
+  if (!isAuthenticated) {
+    return { props: {} }
+  }
+
+  const token = cookies().get('token')?.value
+
+  const response = await api.get('/memories', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const memories: MemoryProps[] = response.data.memories
+  const userIdOn: string = response.data.userIdOn
+
+  return {
+    props: {
+      memories,
+      userIdOn,
+    },
+    revalidate: 60 * 5,
+  }
 }

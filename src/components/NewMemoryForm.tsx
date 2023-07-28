@@ -92,7 +92,7 @@ export function NewMemoryForm() {
       <button
         disabled={isCreatingCheckoutSession}
         type="submit"
-        className="inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
+        className="inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isCreatingCheckoutSession ? 'Salvando...' : 'Salvar'}
       </button>
