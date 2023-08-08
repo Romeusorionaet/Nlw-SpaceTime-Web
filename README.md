@@ -2,7 +2,7 @@
 
 <div align='center'>
 
-[Entre no Space Time](https://nlw-space-time-web-neon.vercel.app)
+[Entre no Space Time](https://nlw-space-time-web-nu.vercel.app)
 
 </div>
 
