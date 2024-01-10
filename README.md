@@ -1,5 +1,7 @@
 <h1 align='center'> Space Time </h1>
 
+<p align='center'>Atenção: Api está hospedado de forma gratuita, e esses serviços são apenas para testes. Isso implica diretamnete no funcionamento do site.</p>
+
 <div align='center'>
 
 [Entre no Space Time](https://nlw-space-time-web-nu.vercel.app)
